@@ -12,7 +12,17 @@ namespace Life_expectancy.LogicLayer
         private static int _noPosition = 0;
         private static int _yesPostion = 1;
         private static double _returnDefault = 0;
-        public static List<YesOrNoQuestions> GetAllQuestion()
+        private static string _positiveResponseValue = "yes";
+
+        public YesOrNoQuestionLogic(int noPosition, int yesPosition,double returnDefault,string positiveResponse)
+        {
+            _noPosition = noPosition;
+            _yesPostion = yesPosition;
+            _returnDefault = returnDefault;
+            _positiveResponseValue = positiveResponse;
+        }
+
+        private static List<YesOrNoQuestions> GetAllQuestion()
         {
             _yesOrNoQuestions = new List<YesOrNoQuestions>
            {
@@ -36,11 +46,10 @@ namespace Life_expectancy.LogicLayer
             {
                 if (item.Id == id)
                 {
-                    return (value.Equals("yes")) ?  item.AllValues.ElementAt(_yesPostion) :  item.AllValues.ElementAt(_noPosition);
+                    return (value.Equals(_positiveResponseValue)) ?  item.AllValues.ElementAt(_yesPostion) :  item.AllValues.ElementAt(_noPosition);
                 }
             }
             return _returnDefault;
         }
-
     }
 }
