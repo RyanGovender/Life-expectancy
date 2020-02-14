@@ -7,7 +7,6 @@ namespace Life_expectancy.Models
 {
     public class YesOrNoQuestions : Question
     {
-        public List<string> YesorNo { get; set; }
         public YesOrNoQuestions(int id, string questionToAsk, List<double> values) : base(id, questionToAsk)
         {
             AllValues = values;

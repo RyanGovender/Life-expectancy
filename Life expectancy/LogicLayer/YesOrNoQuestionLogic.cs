@@ -21,5 +21,10 @@ namespace Life_expectancy.LogicLayer
            };
             return _yesOrNoQuestions;
         }
+
+        public static string DisplayQuestion(string question, QuestionType type)
+        {
+            return type == QuestionType.YesOrNoQuestion ? question + " (Yes/No)" : question;
+        }
     }
 }

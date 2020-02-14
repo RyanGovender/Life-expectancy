@@ -18,9 +18,9 @@ namespace Life_expectancy.LogicLayer
         {
             valueQuestions = new List<ValueQuestion>
             {
-                new ValueQuestion(7,"Between 1-5 What would you rate you Overal Health?",new List<double>{2.3}),
-                new ValueQuestion(10,"In a week how many times do you exercise?",new List<double>{0.7}),
-                  new ValueQuestion(11,"In a week how many times do you drink?",new List<double>{0.3}),
+                new ValueQuestion(7,"What would you rate you Overal Health?",new List<double>{1.8}),
+                new ValueQuestion(10,"In a week how many times do you exercise?",new List<double>{0.6}),
+                new ValueQuestion(11,"In a week how many times do you drink?",new List<double>{0.25}),
 
             };
             return valueQuestions;

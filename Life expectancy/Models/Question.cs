@@ -18,10 +18,10 @@ namespace Life_expectancy.Models
     }
     public class Question
     {
-        public int Id { get; set; }
-        public string QuestionToAsk { get; set; }
+        public int Id { get;}
+        public string QuestionToAsk { get; }
 
-        public DataTypes DataTypes { get;set; }
+        public DataTypes DataTypes { get; set; }
 
         public QuestionType QuestionType { get; set; }
 
