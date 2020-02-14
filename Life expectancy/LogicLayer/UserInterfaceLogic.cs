@@ -10,11 +10,12 @@ namespace Life_expectancy.LogicLayer
         private static int age;
         private static int _minValue=0;
 
-        public static int GetUserAge()
+        private static int GetUserAge()
         {
             do
             {
-                Console.WriteLine("\nEnter your age:");
+              Console.WriteLine("\nEnter your age:");
+
             } while (!int.TryParse(Console.ReadLine(), out age) || age > QuestionnaireLogic.MaxAge || age < _minValue);
 
             return age;
@@ -57,13 +58,13 @@ namespace Life_expectancy.LogicLayer
             DisplayFinalAge();
         }
 
-        public static void Display()
+        private static void Display()
         {
             Console.WriteLine("-------------Life Expectancy Calculator----------------" +
                 "\n\n\n------------Please Enter Values between 0-7 or Yes and No for the questions------------\n\n");
         }
 
-        public static void DisplayFinalAge()
+        private static void DisplayFinalAge()
         {
             Console.WriteLine($"\n\n-------------Your estimated life expectancy is: {QuestionnaireLogic.DisplayFinalAge(age)}---------------------------");
         }

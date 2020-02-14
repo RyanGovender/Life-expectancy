@@ -36,7 +36,7 @@ namespace Life_expectancy.LogicLayer
 
         public static string AddYesOrNo(string question, QuestionType type)
         {
-            return type == QuestionType.YesOrNoQuestion ? question + " (Yes/No)" : question;
+            return type == QuestionType.YesOrNoQuestion ? question + "\n (Y) - Yes\n (N) - No\n" : question;
         }
 
         public static double AgeCalculation(int id, string value)
