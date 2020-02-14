@@ -6,9 +6,10 @@ namespace Life_expectancy.Models
 {
     public class ValueQuestion : Question
     {
-        public ValueQuestion(int id, string questionToAsk,List<double> values) : base(id, questionToAsk)
+        public double Value { get; }
+        public ValueQuestion(int id, string questionToAsk,double value) : base(id, questionToAsk)
         {
-            AllValues = values;
+            Value = value;
             DataTypes = DataTypes.Integer;
             QuestionType = QuestionType.ValueQuestion;
         }

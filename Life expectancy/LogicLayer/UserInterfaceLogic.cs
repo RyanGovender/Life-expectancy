@@ -28,12 +28,12 @@ namespace Life_expectancy.LogicLayer
 
             foreach (var item in QuestionnaireLogic.indexTable)
             {
-                Console.WriteLine(YesOrNoQuestionLogic.DisplayQuestion(item.QuestionToAsk, item.QuestionType));
+                Console.WriteLine(YesOrNoQuestionLogic.AddYesOrNo(item.QuestionToAsk, item.QuestionType));
 
                 if (item.DataTypes == Models.DataTypes.Integer)
                 {
                     var number = Console.ReadLine();
-                    while (!int.TryParse(number, out value) || value > QuestionnaireLogic._max || value < _minValue)
+                    while (!int.TryParse(number, out value) || value > ValueQuestionLogic._maxValueAllowed || value < _minValue)
                     {
                         Console.WriteLine("\nError....Please enter a valid number between 0 - 7");
                         number = Console.ReadLine();

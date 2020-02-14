@@ -10,18 +10,13 @@ namespace Life_expectancy.LogicLayer
     {
         public static List<Question> indexTable = GetAllIndexs();
         private static double AverageAge = 62;
-        public static double MaxAge = 120;
-        public static double _max = 7;
-        private static int _noPosition = 0;
-        private static int _yesPostion = 1;
+        public static int MaxAge = 123;
 
-        public QuestionnaireLogic(int avg, int max,int no,int yes)
+        public QuestionnaireLogic(double avgAge,int maxAge)
         {
             indexTable = GetAllIndexs();
-            AverageAge = avg;
-            _max = max;
-            _noPosition =no;
-            _yesPostion =yes;
+            MaxAge = maxAge;
+            AverageAge = avgAge;
         }
        
         public static List<Question> GetAllIndexs()
@@ -35,37 +30,18 @@ namespace Life_expectancy.LogicLayer
 
         public static double AgeCalculation(int id,string value)
         {
-            foreach (var item in indexTable)
-            {
-                if (item.Id == id)
-                {
-                    return (value.Equals("yes")) ? AverageAge += item.AllValues.ElementAt(_yesPostion) : AverageAge+=item.AllValues.ElementAt(_noPosition);
-                }
-            }
-            return AverageAge;
+          return AverageAge += YesOrNoQuestionLogic.AgeCalculation(id, value);
         }
 
         public static double AgeCalculation(int id, int value)
         {
-            foreach (var item in indexTable)
-            {
-                if (item.Id == id)
-                {
-                    return value>=_max? AverageAge += item.AllValues.ElementAt(0) * _max : AverageAge += item.AllValues.ElementAt(0) * value;
-                   }
-                }
-            return AverageAge;
+            return AverageAge += ValueQuestionLogic.AgeCalculation(id, value);
+        
         }
 
         public static double DisplayFinalAge(int age)
         {
             return (AverageAge < age)? age : Math.Round(AverageAge);
-        }
-
-       
-        public static void DisplayFinalMessage()
-        {
-            
         }
     }
 }

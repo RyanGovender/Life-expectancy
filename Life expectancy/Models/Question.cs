@@ -16,7 +16,7 @@ namespace Life_expectancy.Models
         YesOrNoQuestion =1,
         MultipleQuestion =2
     }
-    public class Question
+    public abstract class Question
     {
         public int Id { get;}
         public string QuestionToAsk { get; }
@@ -24,9 +24,7 @@ namespace Life_expectancy.Models
         public DataTypes DataTypes { get; set; }
 
         public QuestionType QuestionType { get; set; }
-
-        public List<double> AllValues { get; set; }
-
+        
         public Question(int id, string questionToAsk)
         {
             Id = id;

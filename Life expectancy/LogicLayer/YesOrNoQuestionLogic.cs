@@ -1,6 +1,7 @@
 ﻿using Life_expectancy.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Life_expectancy.LogicLayer
@@ -8,7 +9,9 @@ namespace Life_expectancy.LogicLayer
     public class YesOrNoQuestionLogic
     {
         public static List<YesOrNoQuestions> _yesOrNoQuestions = GetAllQuestion();
-
+        private static int _noPosition = 0;
+        private static int _yesPostion = 1;
+        private static double _returnDefault = 0;
         public static List<YesOrNoQuestions> GetAllQuestion()
         {
             _yesOrNoQuestions = new List<YesOrNoQuestions>
@@ -22,9 +25,22 @@ namespace Life_expectancy.LogicLayer
             return _yesOrNoQuestions;
         }
 
-        public static string DisplayQuestion(string question, QuestionType type)
+        public static string AddYesOrNo(string question, QuestionType type)
         {
             return type == QuestionType.YesOrNoQuestion ? question + " (Yes/No)" : question;
         }
+
+        public static double AgeCalculation(int id, string value)
+        {
+            foreach (var item in _yesOrNoQuestions)
+            {
+                if (item.Id == id)
+                {
+                    return (value.Equals("yes")) ?  item.AllValues.ElementAt(_yesPostion) :  item.AllValues.ElementAt(_noPosition);
+                }
+            }
+            return _returnDefault;
+        }
+
     }
 }
