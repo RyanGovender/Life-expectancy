@@ -10,14 +10,16 @@ namespace Life_expectancy.LogicLayer
         private static int _noPosition = 0;
         private static int _yesPostion = 1;
         private static double _returnDefault = 0;
-        private static string _positiveResponseValue = "yes";
+        public static string _positiveResponse = "1";
+        public static string _negativeResponse = "0";
 
-        public YesOrNoQuestionLogic(int noPosition, int yesPosition,double returnDefault,string positiveResponse)
+        public YesOrNoQuestionLogic(int noPosition, int yesPosition,double returnDefault,string positiveResponse,string negativeResponse)
         {
             _noPosition = noPosition;
             _yesPostion = yesPosition;
             _returnDefault = returnDefault;
-            _positiveResponseValue = positiveResponse;
+            _positiveResponse = positiveResponse;
+            _negativeResponse = negativeResponse;
         }
 
         private static List<YesOrNoQuestions> GetAllQuestion()
@@ -34,7 +36,7 @@ namespace Life_expectancy.LogicLayer
 
         public static string AddYesOrNo(string question, QuestionType type)
         {
-            return type == QuestionType.YesOrNoQuestion ? question + "\n (Y) - Yes\n (N) - No\n" : question;
+            return type == QuestionType.YesOrNoQuestion ? question + $"\n ({_positiveResponse.ToUpper()}) - Yes\n ({_negativeResponse.ToUpper()}) - No\n" : question;
         }
 
         public static double AgeCalculation(int id, string value)
@@ -43,7 +45,7 @@ namespace Life_expectancy.LogicLayer
             {
                 if (item.Id == id)
                 {
-                    return (value.Equals(_positiveResponseValue)) ?  item.AllValues.ElementAt(_yesPostion) :  item.AllValues.ElementAt(_noPosition);
+                    return (value.Equals(_positiveResponse)) ?  item.AllValues.ElementAt(_yesPostion) :  item.AllValues.ElementAt(_noPosition);
                 }
             }
             return _returnDefault;

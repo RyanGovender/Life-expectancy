@@ -9,8 +9,6 @@ namespace Life_expectancy.LogicLayer
         StringValue = 1,
     }
 
-   
-
     public class ValueQuestionLogic
     {
         public static List<ValueQuestion> valueQuestions = GetAllQuestions();

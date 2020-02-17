@@ -36,9 +36,9 @@ namespace Life_expectancy.LogicLayer
         {
             GetAverageAge();
 
-            Display();
-
             GetUserAge();
+
+            Display();
 
             foreach (var item in QuestionnaireLogic.indexTable)
             {
@@ -59,9 +59,9 @@ namespace Life_expectancy.LogicLayer
                     if (item.QuestionType == Models.QuestionType.YesOrNoQuestion)
                     {
                         var reply = Console.ReadLine().ToLower();
-                        while (!reply.Equals("yes") && !reply.Equals("no"))
+                        while (!reply.Equals(YesOrNoQuestionLogic._positiveResponse) && !reply.Equals(YesOrNoQuestionLogic._negativeResponse))
                         {
-                            Console.WriteLine("Please enter yes or no.");
+                            Console.WriteLine($"Please enter {YesOrNoQuestionLogic._positiveResponse} or {YesOrNoQuestionLogic._negativeResponse}.");
                             reply = Console.ReadLine().ToLower();
                         }
                         QuestionnaireLogic.AgeCalculation(item.Id, reply);
@@ -73,8 +73,8 @@ namespace Life_expectancy.LogicLayer
 
         private static void Display()
         {
-            Console.WriteLine("-------------Life Expectancy Calculator----------------" +
-                "\n\n\n------------Please Enter Values between 0-7 or Yes and No for the questions------------\n\n");
+            Console.WriteLine($"-------------Life Expectancy Calculator----------------" +
+                $"\n\n\n------------Please Enter Values between  {_minValue} - {ValueQuestionLogic._maxValueAllowed} or  {YesOrNoQuestionLogic._positiveResponse} and {YesOrNoQuestionLogic._negativeResponse} for the questions------------\n\n");
         }
 
         private static void DisplayFinalAge()

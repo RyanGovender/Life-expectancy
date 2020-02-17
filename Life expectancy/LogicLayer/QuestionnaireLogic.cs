@@ -8,6 +8,7 @@ namespace Life_expectancy.LogicLayer
    public class QuestionnaireLogic
     {
         public static List<Question> indexTable = GetAllIndexs();
+        private static double _averageAge = AverageAgeLogic.averageAge;
 
         public static List<Question> GetAllIndexs()
         {
@@ -20,18 +21,17 @@ namespace Life_expectancy.LogicLayer
 
         public static double AgeCalculation(int id, string value)
         {
-            return AverageAgeLogic.averageAge += YesOrNoQuestionLogic.AgeCalculation(id, value);
+            return _averageAge += YesOrNoQuestionLogic.AgeCalculation(id, value);
         }
 
         public static double AgeCalculation(int id, int value)
         {
-            return AverageAgeLogic.averageAge += ValueQuestionLogic.AgeCalculation(id, value);
-
+            return _averageAge += ValueQuestionLogic.AgeCalculation(id, value);
         }
 
         public static double DisplayFinalAge(int age)
         {
-            return (AverageAgeLogic.averageAge < age)? age : Math.Round(AverageAgeLogic.averageAge);
+            return (_averageAge < age)? age : Math.Round(_averageAge);
         }
     }
 }

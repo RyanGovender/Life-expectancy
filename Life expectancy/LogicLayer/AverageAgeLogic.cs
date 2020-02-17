@@ -6,9 +6,14 @@ namespace Life_expectancy.LogicLayer
 {
     public class AverageAgeLogic
     {
-        public static double averageAge = 62;
-        public static double maxAge = 123;
+        public static double averageAge;
+        public static int maxAge = 123;
         public static List<AverageAgeBasedOnCountry> AverageAgeData = GetAllAverageAge();
+
+        public AverageAgeLogic(int maxage)
+        {
+            maxAge = maxage;
+        }
 
         public static List<AverageAgeBasedOnCountry> GetAllAverageAge()
         {
