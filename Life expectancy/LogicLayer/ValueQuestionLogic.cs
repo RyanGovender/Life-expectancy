@@ -1,7 +1,5 @@
 ﻿using Life_expectancy.Models;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Life_expectancy.LogicLayer
 {

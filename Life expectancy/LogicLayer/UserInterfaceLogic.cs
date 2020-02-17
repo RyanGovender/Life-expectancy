@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Life_expectancy.LogicLayer
 {
@@ -9,6 +7,19 @@ namespace Life_expectancy.LogicLayer
         private static int value;
         private static int age;
         private static int _minValue=0;
+        private static int _getCountryCode = 0;
+
+        private static void GetAverageAge()
+        {
+            AverageAgeLogic.DisplayCountyCode();
+            do
+            {
+                Console.WriteLine("Please Enter A Vaild County Code From The Above List.");
+
+            } while (!int.TryParse(Console.ReadLine(), out _getCountryCode) || !AverageAgeLogic.CheckIfIdExist(_getCountryCode));
+
+            AverageAgeLogic.SetAverageAge(_getCountryCode);
+        }
 
         private static int GetUserAge()
         {
@@ -16,13 +27,15 @@ namespace Life_expectancy.LogicLayer
             {
               Console.WriteLine("\nEnter your age:");
 
-            } while (!int.TryParse(Console.ReadLine(), out age) || age > QuestionnaireLogic.MaxAge || age < _minValue);
+            } while (!int.TryParse(Console.ReadLine(), out age) || age > AverageAgeLogic.maxAge || age < _minValue);
 
             return age;
         }
 
         public static void RunProgram()
         {
+            GetAverageAge();
+
             Display();
 
             GetUserAge();
@@ -36,7 +49,7 @@ namespace Life_expectancy.LogicLayer
                     var number = Console.ReadLine();
                     while (!int.TryParse(number, out value) || value > ValueQuestionLogic._maxValueAllowed || value < _minValue)
                     {
-                        Console.WriteLine("\nError....Please enter a valid number between 0 - 7");
+                        Console.WriteLine($"\nError....Please enter a valid number between {_minValue} - {ValueQuestionLogic._maxValueAllowed}");
                         number = Console.ReadLine();
                     }
                     QuestionnaireLogic.AgeCalculation(item.Id, value);

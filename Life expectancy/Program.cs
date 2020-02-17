@@ -1,6 +1,4 @@
 ﻿using Life_expectancy.LogicLayer;
-using Life_expectancy.Models;
-using System;
 
 namespace Life_expectancy
 {
